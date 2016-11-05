@@ -26,12 +26,14 @@ def App(environ,start_response):
     result=['File not found.']
     template ="";
     if filepath=="/" or filepath=="/index.html":
-,        template = environment.get_template('/index.jinja2').render(link='<a href="/about/aboutme.html">About me</a>',color='#9411D6'
-                                                         title='Index', text ="<strong>Ссылки на aboutme.html</strong>")
+,        template = environment.get_template('/index.html').render(link1='<h3> <a href="file:///home/lui/Документы/myproject-master/about/aboutme.html">Абсолютная ссылка</a> </h3>',
+                                                         link2='<h3> href="/about/aboutme.html">Относительная ссылка</h3>',color='#9411D6'
+                                                         text ='<h1><i>Ссылки на  aboutme.html </i> </h1>')
         start_response('200 OK', [('Content-type', 'text/HTML; charset=utf-8')])                                                   
     elif filepath=="/about/aboutme.html":
-        template = environment.get_template('/aboutme.jinja2').render(link='<a href="/index.html">Index</a>',
-                                                       title="Aboutme", text = "<strong>Ссылки на index.html</strong>")
+        template = environment.get_template('/aboutme.html').render((link1='<h3> <a href="file:///home/lui/Документы/myproject-master/index.html">Абсолютная ссылка</a> </h3>',
+                                                         link2='<h3> href="/index.html">Абсолютная ссылка</h3>',color='#20B2AA'
+                                                         text ='<h1><i>Ссылки на index.html </i> </h1>')
         start_response('200 OK', [('Content-type', 'text/HTML; charset=utf-8')])
     else:
         start_response('404 Not Found', [('Content-Type', 'text/HTML; charset=utf-8')])
