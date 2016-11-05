@@ -6,18 +6,19 @@ class Middleware(object):
         self.app = app
 
     def __call__(self, environ, start_response):
-        for lists in self.app(environ, start_response):
-            text = lists.split("\n")
-            for texts in text:
-                if texts.find('<body') != -1:
-                    yield texts.encode()
+        for array in self.app(environ, start_response):
+            str = array.split("\n")
+            for strs in str:
+                if strs.find('<body') != -1:
+                    yield strs.encode()
                     yield "<div class='top'>Middleware TOP</div>".encode()
                 else:
-                    if texts.find("</body") != -1:
+                    if strs.find("</body") != -1:
                         yield "<div class='botton'>Middleware BOTTOM</div>".encode()
-                        yield texts.encode()
+                        yield strs.encode()
                     else:
-                        yield texts.encode()
+                        yield strs.encode()
+
 
 def App(environ,start_response):
     filepath = environ['PATH_INFO']
