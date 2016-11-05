@@ -26,12 +26,12 @@ def App(environ,start_response):
     result=['File not found.']
     template ="";
     if filepath=="/" or filepath=="/index.html":
-        template = environment.get_template('/index.jinja2').render(link='<a href="/about/aboutme.html">About me</a>',
-                                                         title='Index', text ="<strong>This is INDEX!</strong>")
+,        template = environment.get_template('/index.jinja2').render(link='<a href="/about/aboutme.html">About me</a>',color='#9411D6'
+                                                         title='Index', text ="<strong>Ссылки на aboutme.html</strong>")
         start_response('200 OK', [('Content-type', 'text/HTML; charset=utf-8')])                                                   
     elif filepath=="/about/aboutme.html":
         template = environment.get_template('/aboutme.jinja2').render(link='<a href="/index.html">Index</a>',
-                                                       title="Aboutme", text = "<strong>This is ABOUTME!</strong>")
+                                                       title="Aboutme", text = "<strong>Ссылки на index.html</strong>")
         start_response('200 OK', [('Content-type', 'text/HTML; charset=utf-8')])
     else:
         start_response('404 Not Found', [('Content-Type', 'text/HTML; charset=utf-8')])
