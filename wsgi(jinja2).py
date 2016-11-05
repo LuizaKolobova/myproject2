@@ -26,12 +26,12 @@ def App(environ,start_response):
     template ="";
     if filepath=="/" or filepath=="/index.html":
         template = environment.get_template('/index.html').render(link1='<h3> <a href="http://localhost:8000/about/aboutme.html">Абсолютная ссылка</a> </h3>',
-                                                         link2='<h3> <a href="/about/aboutme.html">Относительная ссылка </a></h3>',color='{color: #20B2AA;}',
+                                                         link2='<h3> <a href="/about/aboutme.html">Относительная ссылка </a></h3>',color='{color: #FF1493;}',
                                                          text ='<h1><i>Ссылки на  aboutme.html </i> </h1>')
         start_response('200 OK', [('Content-type', 'text/HTML; charset=utf-8')])
     elif filepath=="/about/aboutme.html":
         template = environment.get_template('/aboutme.html').render(link1='<h3> <a href="http://localhost:8000/index.html">Абсолютная ссылка</a> </h3>',
-                                                         link2='<h3><a href="/index.html">Относительная ссылка </a></h3>',color='{color: #20B2AA;}',
+                                                         link2='<h3><a href="/index.html">Относительная ссылка </a></h3>',color='{color: #FFFF00;}',
                                                          text ='<h1><i>Ссылки на index.html </i> </h1>')
         start_response('200 OK', [('Content-type', 'text/HTML; charset=utf-8')])
     else:
